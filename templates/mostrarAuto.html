@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block barraDeNavegacion %}
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'inicio' %}">Volver a Inicio</a>
+            <a class="navbar-brand" href="{% url 'autos' %}">Volver a Autos</a>
+            <a class="navbar-brand" href="{% url 'autoBusqueda' %}">Volver a Filtrar Autos</a>
+            <a class="btn btn-primary" href="#signup">Sign Up</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block bienvenida %}
+    <h3>Los resultados son:</h3>
+    {% for auto in autos %}
+        {{ auto.fabricante }} {{ auto.nombre }}, año {{ auto.modelo }}, con un motor de {{ auto.motor }}cc.
+        <br>
+    {% endfor %}
+{% endblock %}
+
+    
+

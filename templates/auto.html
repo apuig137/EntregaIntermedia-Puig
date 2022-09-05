@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block barraDeNavegacion %}
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'inicio' %}">Volver a Inicio</a>
+            <a class="navbar-brand" href="{% url 'autoBusqueda' %}">Filtrar Autos</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block bienvenida %}
+    <h1>Bienvenido a nuestra seccion de autos!</h1>
+    <h3>Formulario para agregar autos:</h3>
+    {% if miFormulario.errors %}
+    <p style="color:red;"> Datos erroneos, por favor revisar. </p>
+    {% endif %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="submit", value="Enviar">
+    </form>
+    {% for auto in autos %}
+        {{ auto.fabricante }} {{ auto.nombre }}, año {{ auto.modelo }}, con un motor de {{ auto.motor }}cc.
+        <br>
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block barraDeNavegacion %}
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'inicio' %}">Volver a Inicio</a>
+            <a class="navbar-brand" href="{% url 'camionetas' %}">Volver a Camionetas</a>
+            <a class="navbar-brand" href="{% url 'camionetaBusqueda' %}">Volver a Filtrar Camionetas</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block bienvenida %}
+    <h3>Los resultados son:</h3>
+    {% for camioneta in camionetas %}
+        {{ camioneta.fabricante }} {{ camioneta.nombre }}, año {{ camioneta.modelo }}, con un motor de {{ camioneta.motor }}cc.
+        <br>
+    {% endfor %}
+{% endblock %}

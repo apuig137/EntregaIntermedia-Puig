@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block barraDeNavegacion %}
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'inicio' %}">Volver a Inicio</a>
+            <a class="navbar-brand" href="{% url 'motos' %}">Volver a Motocicletas</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block bienvenida %}
+    <h3>Ingrese el motor de la motocicleta que desea ver:</h3>
+    <form action="/motoBusqueda/PrefinalMVT/mostrarMoto/" method="GET">
+        {% csrf_token %}
+
+            {{ form.as_p }}
+            <input type="submit" value="Buscar">
+
+    </form>
+{% endblock %}

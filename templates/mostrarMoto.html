@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% load static %}
+
+{% block barraDeNavegacion %}
+    <nav class="navbar navbar-light bg-light static-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'inicio' %}">Volver a Inicio</a>
+            <a class="navbar-brand" href="{% url 'motos' %}">Volver a Motocicletas</a>
+            <a class="navbar-brand" href="{% url 'motoBusqueda' %}">Volver a Filtrar Motocicletas</a>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block bienvenida %}
+    <h3>Los resultados son:</h3>
+    {% for moto in motos %}
+        {{ moto.fabricante }} {{ moto.nombre }}, año {{ moto.modelo }}, con un motor de {{ moto.motor }}cc.
+        <br>
+    {% endfor %}
+{% endblock %}
